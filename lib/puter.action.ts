@@ -1,7 +1,18 @@
 import puter from "@heyputer/puter.js";
 import {getOrCreateHostingConfig, uploadImageToHosting} from "./puter.hosting";
 import {isHostedUrl} from "./utils";
-import {PUTER_WORKER_URL} from "./constants";
+
+const PROJECT_PREFIX = 'roomify_project_';
+
+const getUserId = async (userPuter: any) => {
+    try {
+        const user = await userPuter.auth.getUser();
+
+        return user?.uuid || null;
+    } catch {
+        return null;
+    }
+}
 
 export const signIn = async () => {
     try {
@@ -30,11 +41,6 @@ export const getCurrentUser = async () => {
 }
 
 export const createProject = async ({ item, visibility = "private" }: CreateProjectParams): Promise<DesignItem | null | undefined> => {
-    if(!PUTER_WORKER_URL) {
-        console.warn('Missing VITE_PUTER_WORKER_URL, skip history fetch');
-        return null;
-    }
-
     const projectId = item.id;
 
     const hosting = await getOrCreateHostingConfig();
@@ -49,7 +55,6 @@ export const createProject = async ({ item, visibility = "private" }: CreateProj
     const resolvedSource = hostedSource?.url || (isHostedUrl(item.sourceImage) ? item.sourceImage : '');
 
     if(!resolvedSource) {
-
         console.warn('Failed to host source image, skipping save.');
         return null;
     }
@@ -71,46 +76,38 @@ export const createProject = async ({ item, visibility = "private" }: CreateProj
         ...rest,
         sourceImage: resolvedSource,
         renderedImage: resolvedRender,
+        updatedAt: new Date().toISOString(),
     }
 
     try{
-        // call the Puter worker to store project in kv
-        const response = await puter.workers.exec(`${PUTER_WORKER_URL}/api/projects/save`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ project: payload, visibility })
-        });
-
-        if(!response.ok) {
-            console.error('failed to save the project', await response.text());
+        const userId = await getUserId(puter);
+        if(!userId) {
+            console.error('Authentication Failed');
             return null;
         }
 
-        const data = (await response.json()) as { project?: DesignItem | null };
+        const key = `${PROJECT_PREFIX}${item.id}`;
+        await puter.kv.set(key, payload);
 
-        return data?.project ?? null;
-    } catch(e) {
+        return payload as DesignItem;
+    } catch(e: any) {
         console.error(`Failed to save the project`, e);
         return null;
     }
 }
 
 export const getProjects = async () => {
-    if(!PUTER_WORKER_URL) {
-        console.warn('Missing VITE_PUTER_WORKER_URL, skip history fetch');
-        return []
-    }
-
     try {
-        const response = await puter.workers.exec(`${PUTER_WORKER_URL}/api/projects/list`, {method: 'GET',});
-
-        if(!response.ok) {
-            console.error('Failed to fetch history', await response.text());
+        const userId = await getUserId(puter);
+        if(!userId) {
+            console.error('Authentication Failed');
             return [];
         }
 
-        const data = (await response.json()) as { projects?: DesignItem[] | null };
-        return Array.isArray(data?.projects) ? data?.projects : [];
+        const projects = (await puter.kv.list(PROJECT_PREFIX, true))
+            .map(({value}: any) => ({ ...value, isPublic: true}))
+
+        return Array.isArray(projects) ? projects as DesignItem[] : [];
     } catch(e) {
         console.error('Failed to fetch projects', e);
         return [];
@@ -118,21 +115,17 @@ export const getProjects = async () => {
 }
 
 export const getPublicProjects = async () => {
-    if(!PUTER_WORKER_URL) {
-        console.warn('Missing VITE_PUTER_WORKER_URL, skip public history fetch');
-        return []
-    }
-
     try {
-        const response = await puter.workers.exec(`${PUTER_WORKER_URL}/api/projects/list?visibility=public`, {method: 'GET',});
-
-        if(!response.ok) {
-            console.error('Failed to fetch public history', await response.text());
+        const userId = await getUserId(puter);
+        if(!userId) {
+            console.error('Authentication Failed');
             return [];
         }
 
-        const data = (await response.json()) as { projects?: DesignItem[] | null };
-        return Array.isArray(data?.projects) ? data?.projects : [];
+        const projects = (await puter.kv.list(PROJECT_PREFIX, true))
+            .map(({value}: any) => ({ ...value, isPublic: true}))
+
+        return Array.isArray(projects) ? projects as DesignItem[] : [];
     } catch(e) {
         console.error('Failed to fetch public projects', e);
         return [];
@@ -140,33 +133,26 @@ export const getPublicProjects = async () => {
 }
 
 export const getProjectById = async ({ id }: { id: string }) => {
-    if (!PUTER_WORKER_URL) {
-        console.warn("Missing VITE_PUTER_WORKER_URL; skipping project fetch.");
-        return null;
-    }
-
     console.log("Fetching project with ID:", id);
 
     try {
-        const response = await puter.workers.exec(
-            `${PUTER_WORKER_URL}/api/projects/get?id=${encodeURIComponent(id)}`,
-            { method: "GET" },
-        );
-
-        console.log("Fetch project response:", response);
-
-        if (!response.ok) {
-            console.error("Failed to fetch project:", await response.text());
+        const userId = await getUserId(puter);
+        if(!userId) {
+            console.error('Authentication Failed');
             return null;
         }
 
-        const data = (await response.json()) as {
-            project?: DesignItem | null;
-        };
+        const key = `${PROJECT_PREFIX}${id}`;
+        const project = await puter.kv.get(key);
 
-        console.log("Fetched project data:", data);
+        if (!project) {
+            console.error("Project not found");
+            return null;
+        }
 
-        return data?.project ?? null;
+        console.log("Fetched project data:", project);
+
+        return project as DesignItem;
     } catch (error) {
         console.error("Failed to fetch project:", error);
         return null;
