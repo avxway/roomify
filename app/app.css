@@ -377,10 +377,20 @@
         @apply shadow-xl;
 
         .panel-header {
-          @apply flex items-center justify-between;
+          @apply flex items-center justify-between p-4 border-b border-zinc-100;
+
+          .panel-meta {
+            p {
+              @apply text-[10px] font-mono uppercase tracking-widest text-zinc-400 leading-none mb-1;
+            }
+
+            h3 {
+              @apply text-lg font-serif font-bold text-black leading-none;
+            }
+          }
 
           .hint {
-            @apply text-xs text-zinc-400;
+            @apply text-[10px] text-zinc-400 font-mono uppercase tracking-widest;
           }
         }
 
