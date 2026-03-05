@@ -32,7 +32,8 @@ const Navbar = () => {
                         <span className="name">Roomify</span>
                     </Link>
                     <ul className="links">
-                        <a href="/docs">Docs</a>
+                        <Link to="/showcase">Showcase</Link>
+                        <Link to="/docs">Docs</Link>
                     </ul>
                 </div>
 
