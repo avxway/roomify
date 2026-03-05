@@ -332,10 +332,10 @@
       }
 
       .render-area {
-        @apply relative bg-zinc-100 min-h-80;
+        @apply relative bg-zinc-100 h-[500px];
 
         .render-img {
-          @apply w-full h-full object-contain transition-all duration-700 opacity-100 scale-100;
+          @apply w-full h-full object-cover transition-all duration-700 opacity-100 scale-100;
         }
 
         &.is-processing {
@@ -349,7 +349,7 @@
         }
 
         .render-fallback {
-          @apply w-full h-full object-contain opacity-50;
+          @apply w-full h-full object-cover opacity-50;
         }
 
         .render-overlay {
@@ -395,7 +395,7 @@
         }
 
         .compare-stage {
-          @apply relative bg-zinc-100 overflow-hidden;
+          @apply relative bg-zinc-100 overflow-hidden h-[500px];
         }
 
         .compare-fallback {
@@ -403,7 +403,7 @@
         }
 
         .compare-img {
-          @apply w-full h-auto object-contain;
+          @apply w-full h-full object-cover;
         }
       }
     }
@@ -530,7 +530,7 @@
               @apply aspect-square overflow-hidden bg-zinc-100 relative;
 
               img {
-                @apply w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-700;
+                @apply w-full h-full object-cover group-hover:scale-105 transition-transform duration-700;
               }
 
               .badge {

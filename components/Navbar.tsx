@@ -32,7 +32,6 @@ const Navbar = () => {
                         <span className="name">Roomify</span>
                     </Link>
                     <ul className="links">
-                        <a href="/showcase">Showcase</a>
                         <a href="/docs">Docs</a>
                     </ul>
                 </div>
