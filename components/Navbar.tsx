@@ -1,7 +1,7 @@
 import React from 'react'
 import {Box} from "lucide-react";
 import Button from "./ui/Button";
-import {useOutletContext} from "react-router";
+import {Link, useOutletContext} from "react-router";
 
 const Navbar = () => {
     const { isSignedIn, userName, signIn, signOut } = useOutletContext<AuthContext>()
@@ -27,15 +27,13 @@ const Navbar = () => {
         <header className="navbar">
             <nav className="inner">
                 <div className="left">
-                    <div className="brand">
+                    <Link to="/" className="brand">
                         <Box className="logo" />
                         <span className="name">Roomify</span>
-                    </div>
+                    </Link>
                     <ul className="links">
-                        <a href="#">Product</a>
-                        <a href="#">Pricing</a>
-                        <a href="#">Community</a>
-                        <a href="#">Enterprise</a>
+                        <a href="/showcase">Showcase</a>
+                        <a href="/docs">Docs</a>
                     </ul>
                 </div>
 
