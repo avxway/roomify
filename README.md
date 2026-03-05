@@ -1,98 +1,85 @@
-# Welcome to React Router!
+# Roomify | AI-powered Architectural Visualization App
 
-A modern, production-ready template for building full-stack React applications using React Router.
+## Table of Contents
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+- [Introduction](#-introduction)
+- [Tech Stack](#️-tech-stack)
+- [Features](#-features)
+- [Quick Start](#-quick-start)
+
+
+
+
+## Introduction
+
+Roomify is an AI-driven architectural visualization platform built with React, TypeScript, and Puter. It leverages advanced AI models like Claude and Gemini to convert 2D floor plans into stunning, photorealistic 3D renders. The app includes permanent hosting, persistent metadata, serverless worker integration, and a global feed to showcase your creations.
+
+## Tech Stack
+
+- **React**: A component-based JavaScript library for building dynamic, high-performance user interfaces.
+- **Vite**: A modern build tool that provides a lightning-fast development environment and optimized production bundles.
+- **TypeScript**: Adds static typing to JavaScript, catching errors during development and improving code maintainability.
+- **TailwindCSS**: A utility-first CSS framework for rapid UI design and consistent styling directly in your markup.
+- **Puter**: A cloud OS providing serverless infrastructure, including Workers, KV storage, and persistent file hosting.
+- **Puter.js SDK**: The official bridge for interacting with Puter's cloud services directly from your frontend code.
+- **CodeRabbit**: An AI-powered review tool that enhances code quality with automated insights and security checks.
+- **Junie by JetBrains**: An integrated AI assistant that automates complex refactoring and logic directly in the IDE.
+- **Claude & Gemini**: Cutting-edge LLMs that power the core architectural transformation and image generation logic.
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- **2D-to-3D Magic**: Instantly transform flat architectural sketches into immersive 3D renders using state-of-the-art AI.
+- **Permanent Hosting**: Every render is stored permanently with public URLs, ensuring your work is always available.
+- **Personal Project Hub**: A dedicated dashboard to track your history, manage projects, and access metadata instantly.
+- **Transformation Comparison**: Interactive side-by-side views to visualize the leap from source sketch to AI masterpiece.
+- **Community Showcase**: A global feed for sharing your architectural projects and discovering inspiration from others.
+- **Granular Privacy**: Take control of your data with flexible public and private visibility settings for every project.
+- **Metadata Ownership**: A robust system that maps projects to user IDs for seamless management and tracking.
+- **One-Click Export**: High-performance tools to download and integrate AI-generated renders into your professional workflow.
 
-## Getting Started
+And many more, including scalable architecture and reusable components.
+
+## Quick Start
+
+Get the project running on your local machine in just a few steps.
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- Git
+- Node.js
+- npm
+
+### Cloning the Repository
+
+```bash
+git clone https://github.com/adrianhajdin/roomify
+cd roomify
+```
 
 ### Installation
 
-Install the dependencies:
+Install the project dependencies:
 
 ```bash
 npm install
 ```
 
-### Configuration
+### Set Up Environment Variables
 
-Copy the example environment file and update it with your own values:
+Create a `.env` file in the root directory and add:
 
-```bash
-cp .env.example .env.local
+```env
+VITE_PUTER_WORKER_URL=""
 ```
 
-The following environment variables are required:
-- `VITE_PUTER_WORKER_URL`: The URL of your Puter worker.
+Get your credentials by signing up at [Puter.com](https://puter.com).
 
-### Development
-
-Start the development server with HMR:
+### Running the Project
 
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+Visit [http://localhost:3000](http://localhost:3000) in your browser to start visualizing!
