@@ -186,7 +186,7 @@ const VisualizerId = () => {
                         {project?.sourceImage ?? currentImage ? (
                             <ReactCompareSlider
                                 defaultValue = {50}
-                                style = {{ width: '100%', height: 'auto'}}
+                                style = {{ width: '100%', height: '500px'}}
                                 itemOne= {
                                 <ReactCompareSliderImage src={project?.sourceImage} alt="before"
                                 className="compare-img" />

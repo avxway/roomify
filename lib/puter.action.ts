@@ -117,6 +117,28 @@ export const getProjects = async () => {
     }
 }
 
+export const getPublicProjects = async () => {
+    if(!PUTER_WORKER_URL) {
+        console.warn('Missing VITE_PUTER_WORKER_URL, skip public history fetch');
+        return []
+    }
+
+    try {
+        const response = await puter.workers.exec(`${PUTER_WORKER_URL}/api/projects/list?visibility=public`, {method: 'GET',});
+
+        if(!response.ok) {
+            console.error('Failed to fetch public history', await response.text());
+            return [];
+        }
+
+        const data = (await response.json()) as { projects?: DesignItem[] | null };
+        return Array.isArray(data?.projects) ? data?.projects : [];
+    } catch(e) {
+        console.error('Failed to fetch public projects', e);
+        return [];
+    }
+}
+
 export const getProjectById = async ({ id }: { id: string }) => {
     if (!PUTER_WORKER_URL) {
         console.warn("Missing VITE_PUTER_WORKER_URL; skipping project fetch.");
