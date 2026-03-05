@@ -107,20 +107,20 @@
     @apply fixed top-0 w-full z-50 bg-background/90 backdrop-blur-sm border-b border-black/5;
 
     .inner {
-      @apply max-w-7xl mx-auto px-6 h-16 flex items-center justify-between;
+      @apply max-w-5xl mx-auto px-2 h-14 flex items-center justify-between;
 
       .left {
-        @apply flex items-center space-x-8;
+        @apply flex items-center space-x-6;
 
         .brand {
           @apply flex items-center space-x-2 cursor-pointer;
 
           .logo {
-            @apply w-6 h-6 text-black;
+            @apply w-5 h-5 text-black;
           }
 
           .name {
-            @apply text-xl font-serif font-bold text-black tracking-tight;
+            @apply text-lg font-serif font-bold text-black tracking-tight;
           }
         }
 
@@ -264,20 +264,20 @@
   }
 
   .visualizer {
-    @apply min-h-screen bg-background pt-6 pb-10 px-4 md:px-6 flex flex-col items-center font-sans relative;
+    @apply min-h-screen bg-background pt-4 pb-8 px-4 md:px-6 flex flex-col items-center font-sans relative;
 
     .topbar {
-      @apply w-full max-w-6xl flex items-center justify-between mb-6 px-2;
+      @apply w-full max-w-5xl flex items-center justify-between mb-4 px-2;
 
       .brand {
         @apply flex items-center space-x-2 cursor-pointer;
 
         .logo {
-          @apply w-6 h-6 text-black;
+          @apply w-5 h-5 text-black;
         }
 
         .name {
-          @apply text-xl font-serif font-bold text-black tracking-tight;
+          @apply text-lg font-serif font-bold text-black tracking-tight;
         }
       }
 
@@ -285,54 +285,54 @@
         @apply text-zinc-500 hover:text-black hover:bg-zinc-100;
 
         .icon {
-          @apply w-5 h-5 mr-2;
+          @apply w-4 h-4 mr-2;
         }
       }
     }
 
     .content {
-      @apply w-full max-w-6xl grid grid-cols-1 gap-6;
+      @apply w-full max-w-5xl grid grid-cols-1 gap-4;
     }
 
     .panel {
       @apply bg-white rounded-xl border border-zinc-200 shadow-2xl overflow-hidden;
 
       .panel-header {
-        @apply flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-5 border-b border-zinc-100;
+        @apply flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-4 border-b border-zinc-100;
 
         .panel-meta {
           p {
-            @apply text-xs font-mono uppercase tracking-widest text-zinc-400;
+            @apply text-[10px] font-mono uppercase tracking-widest text-zinc-400;
           }
 
           h2 {
-            @apply text-2xl font-serif font-bold text-black;
+            @apply text-xl font-serif font-bold text-black;
           }
 
           h3 {
-            @apply text-lg font-serif font-bold text-black;
+            @apply text-base font-serif font-bold text-black;
           }
 
           .note {
-            @apply text-xs text-zinc-500 mt-1;
+            @apply text-[10px] text-zinc-500 mt-1;
           }
         }
 
         .panel-actions {
-          @apply flex flex-wrap items-center gap-3;
+          @apply flex flex-wrap items-center gap-2;
 
           .export {
-            @apply bg-primary text-white hover:bg-orange-600 h-9 border-none shadow-sm;
+            @apply bg-primary text-white hover:bg-orange-600 h-8 text-xs border-none shadow-sm;
           }
 
           .share {
-            @apply bg-black text-white h-9 shadow-sm hover:bg-zinc-800;
+            @apply bg-black text-white h-8 text-xs shadow-sm hover:bg-zinc-800;
           }
         }
       }
 
       .render-area {
-        @apply relative bg-zinc-100 min-h-105;
+        @apply relative bg-zinc-100 min-h-80;
 
         .render-img {
           @apply w-full h-full object-contain transition-all duration-700 opacity-100 scale-100;
@@ -377,20 +377,20 @@
         @apply shadow-xl;
 
         .panel-header {
-          @apply flex items-center justify-between p-4 border-b border-zinc-100;
+          @apply flex items-center justify-between p-3 border-b border-zinc-100;
 
           .panel-meta {
             p {
-              @apply text-[10px] font-mono uppercase tracking-widest text-zinc-400 leading-none mb-1;
+              @apply text-[9px] font-mono uppercase tracking-widest text-zinc-400 leading-none mb-1;
             }
 
             h3 {
-              @apply text-lg font-serif font-bold text-black leading-none;
+              @apply text-base font-serif font-bold text-black leading-none;
             }
           }
 
           .hint {
-            @apply text-[10px] text-zinc-400 font-mono uppercase tracking-widest;
+            @apply text-[9px] text-zinc-400 font-mono uppercase tracking-widest;
           }
         }
 
@@ -413,50 +413,50 @@
     @apply min-h-screen bg-background relative overflow-x-hidden text-foreground;
 
     .hero {
-      @apply pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col items-center text-center;
+      @apply pt-24 pb-16 px-6 max-w-5xl mx-auto flex flex-col items-center text-center;
 
       .announce {
-        @apply mb-8 inline-flex items-center px-3 py-1 rounded-md bg-white border border-zinc-200 shadow-sm;
+        @apply mb-6 inline-flex items-center px-3 py-1 rounded-md bg-white border border-zinc-200 shadow-sm;
 
         .dot {
-          @apply w-4 h-4 rounded bg-blue-100 flex items-center justify-center mr-2;
+          @apply w-3.5 h-3.5 rounded bg-blue-100 flex items-center justify-center mr-2;
 
           .pulse {
-            @apply w-2 h-2 rounded-full bg-blue-500 animate-pulse;
+            @apply w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse;
           }
         }
 
         p {
-          @apply text-[10px] font-bold uppercase tracking-widest text-zinc-600;
+          @apply text-[9px] font-bold uppercase tracking-widest text-zinc-600;
         }
       }
 
       h1 {
-        @apply text-6xl md:text-8xl font-serif leading-[0.95] text-black mb-8 max-w-5xl mx-auto;
+        @apply text-5xl md:text-7xl font-serif leading-[0.95] text-black mb-6 max-w-4xl mx-auto;
       }
 
       .subtitle {
-        @apply max-w-2xl mx-auto text-xs md:text-sm font-mono uppercase tracking-widest text-zinc-500 mb-10 leading-relaxed;
+        @apply max-w-xl mx-auto text-[10px] md:text-xs font-mono uppercase tracking-widest text-zinc-500 mb-8 leading-relaxed;
       }
 
       .actions {
-        @apply flex flex-col sm:flex-row gap-4 justify-center mb-16;
+        @apply flex flex-col sm:flex-row gap-3 justify-center mb-12;
 
         .cta {
-          @apply inline-flex items-center justify-center rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background px-8 py-3 text-sm uppercase tracking-wide font-bold bg-primary text-white hover:bg-[#ea580c] shadow-md;
+          @apply inline-flex items-center justify-center rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background px-6 py-2.5 text-xs uppercase tracking-wide font-bold bg-primary text-white hover:bg-[#ea580c] shadow-md;
 
           .icon {
-            @apply ml-2 w-4 h-4;
+            @apply ml-2 w-3.5 h-3.5;
           }
         }
 
         .demo {
-          @apply px-8 bg-white rounded-md hover:bg-zinc-50;
+          @apply px-6 bg-white rounded-md hover:bg-zinc-50 h-10 text-xs;
         }
       }
 
       .upload-shell {
-        @apply w-full max-w-5xl mx-auto relative rounded-3xl overflow-hidden bg-linear-to-b from-blue-100/50 to-white/50 border border-blue-100 p-6 md:p-12 shadow-sm min-h-100 flex items-center justify-center;
+        @apply w-full max-w-4xl mx-auto relative rounded-2xl overflow-hidden bg-linear-to-b from-blue-100/50 to-white/50 border border-blue-100 p-4 md:p-10 shadow-sm min-h-80 flex items-center justify-center;
 
         .grid-overlay {
           @apply absolute inset-0 opacity-40 pointer-events-none;
@@ -465,29 +465,29 @@
                   linear-gradient(#3b82f6 1px, transparent 1px),
                   linear-gradient(90deg, #3b82f6 1px, transparent 1px);
 
-          background-size: 60px 60px;
+          background-size: 50px 50px;
         }
 
         .upload-card {
-          @apply relative w-full max-w-xl bg-white rounded-2xl shadow-xl overflow-hidden border border-zinc-100 p-8 z-10 transition-transform hover:scale-[1.01] duration-500;
+          @apply relative w-full max-w-lg bg-white rounded-xl shadow-xl overflow-hidden border border-zinc-100 p-6 z-10 transition-transform hover:scale-[1.01] duration-500;
 
           .upload-head {
-            @apply text-center mb-6;
+            @apply text-center mb-5;
 
             .upload-icon {
-              @apply w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3;
+              @apply w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3;
 
               .icon {
-                @apply text-orange-500 w-6 h-6;
+                @apply text-orange-500 w-5 h-5;
               }
             }
 
             h3 {
-              @apply text-xl font-serif font-bold text-black;
+              @apply text-lg font-serif font-bold text-black;
             }
 
             p {
-              @apply text-zinc-500 text-sm mt-1;
+              @apply text-zinc-500 text-xs mt-1;
             }
           }
         }
@@ -495,36 +495,36 @@
     }
 
     .projects {
-      @apply py-24 bg-white relative border-b border-zinc-100;
+      @apply py-16 bg-white relative border-b border-zinc-100;
 
       .section-inner {
-        @apply max-w-7xl mx-auto px-6;
+        @apply max-w-5xl mx-auto px-6;
 
         .section-head {
-          @apply flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6;
+          @apply flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6;
 
           .copy {
-            @apply max-w-2xl;
+            @apply max-w-xl;
 
             h2 {
-              @apply text-4xl font-serif text-black mb-4;
+              @apply text-3xl font-serif text-black mb-3;
             }
 
             p {
-              @apply text-zinc-500 text-lg;
+              @apply text-zinc-500 text-base;
             }
           }
         }
 
         .loading {
-          @apply flex items-center justify-center text-sm text-zinc-500;
+          @apply flex items-center justify-center text-xs text-zinc-500;
         }
 
         .projects-grid {
-          @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+          @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
 
           .project-card {
-            @apply relative bg-white rounded-xl overflow-hidden border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col h-full;
+            @apply relative bg-white rounded-lg overflow-hidden border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col h-full;
 
             .preview {
               @apply aspect-4/3 overflow-hidden bg-zinc-100 relative;
@@ -534,54 +534,54 @@
               }
 
               .badge {
-                @apply absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2 py-1 rounded-md border border-zinc-200 shadow-sm;
+                @apply absolute top-2.5 left-2.5 bg-white/90 backdrop-blur-md px-2 py-0.5 rounded-md border border-zinc-200 shadow-sm flex items-center justify-center;
 
                 span {
-                  @apply text-[10px] font-bold uppercase tracking-wider text-zinc-800;
+                  @apply text-[9px] font-bold uppercase tracking-wider text-zinc-800 leading-none;
                 }
               }
             }
 
             .card-body {
-              @apply p-5 flex justify-between items-center bg-white border-t border-zinc-100 grow;
+              @apply p-4 flex justify-between items-center bg-white border-t border-zinc-100 grow;
 
               h3 {
-                @apply text-lg font-serif font-bold text-zinc-900 group-hover:text-primary transition-colors;
+                @apply text-base font-serif font-bold text-zinc-900 group-hover:text-primary transition-colors;
               }
 
               .meta {
-                @apply flex items-center text-zinc-400 text-xs mt-1 space-x-2;
+                @apply flex items-center text-zinc-400 text-[10px] mt-1 space-x-2;
 
                 span {
                   @apply font-mono uppercase;
                 }
 
                 span:last-child {
-                  @apply text-zinc-400 text-[10px] uppercase tracking-wide;
+                  @apply text-zinc-400 text-[9px] uppercase tracking-wide;
                 }
               }
 
               .arrow {
-                @apply w-10 h-10 rounded-full bg-zinc-50 border border-zinc-200 flex items-center justify-center text-zinc-400 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-300;
+                @apply w-8 h-8 rounded-full bg-zinc-50 border border-zinc-200 flex items-center justify-center text-zinc-400 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-300;
               }
             }
           }
 
           .empty {
-            @apply col-span-full rounded-xl border border-dashed border-zinc-200 bg-zinc-50 p-10 text-center text-sm text-zinc-500;
+            @apply col-span-full rounded-xl border border-dashed border-zinc-200 bg-zinc-50 p-8 text-center text-xs text-zinc-500;
           }
         }
       }
     }
 
     .partners {
-      @apply border-t border-zinc-200 py-12 bg-white;
+      @apply border-t border-zinc-200 py-10 bg-white;
 
       .section-inner {
-        @apply max-w-7xl mx-auto px-6;
+        @apply max-w-5xl mx-auto px-6;
 
         .logos {
-          @apply grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500;
+          @apply grid grid-cols-2 md:grid-cols-5 gap-6 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500;
         }
 
         .logo-item {
@@ -592,7 +592,7 @@
           }
 
           span {
-            @apply font-bold text-xl text-zinc-800 group-hover:text-black transition-colors tracking-tight;
+            @apply font-bold text-lg text-zinc-800 group-hover:text-black transition-colors tracking-tight;
           }
         }
       }
